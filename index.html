@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Premium Audio</title>
+    <meta name="description" content="Discover crystal-clear sound with our premium selection of minimalist audio gear.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" data-link="home">aura.</a>
+            <nav class="nav-links desktop-only">
+                <a href="#" data-link="home" class="active">Home</a>
+                <a href="#" data-link="shop">Shop</a>
+                <a href="#" data-link="about">About</a>
+                <a href="#" data-link="contact">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
+                <button class="icon-btn cart-toggle" aria-label="Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+                <button class="icon-btn mobile-menu-btn" aria-label="Menu" id="mobile-menu-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="#" data-link="home">Home</a>
+            <a href="#" data-link="shop">Shop</a>
+            <a href="#" data-link="about">About</a>
+            <a href="#" data-link="contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-root">
+        <!-- Views will be toggled here -->
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay hidden" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-btn cart-close" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items injected by JS -->
+            <div class="empty-cart-msg">Your cart is currently empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cart-subtotal-price">$0.00</span>
+            </div>
+            <p class="cart-tax-note">Shipping & taxes calculated at checkout</p>
+            <button class="btn btn-primary btn-full checkout-btn" id="go-to-checkout" disabled>Secure Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Email Popup -->
+    <div class="popup-overlay hidden" id="popup-overlay">
+        <div class="popup-modal">
+            <button class="close-btn popup-close" aria-label="Close popup">&times;</button>
+            <div class="popup-content">
+                <h2>Unlock 10% Off</h2>
+                <p>Join our newsletter for exclusive drops and premium audio insights.</p>
+                <form id="email-form" class="popup-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Toast -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid container">
+            <div class="footer-brand">
+                <a href="#" class="logo">aura.</a>
+                <p class="footer-desc">Elevating personal audio through minimalist design and pristine sound engineering. Hear the unheard.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <a href="#" data-link="shop">All Products</a>
+                <a href="#">Headphones</a>
+                <a href="#">Earbuds</a>
+                <a href="#">Accessories</a>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <a href="#">FAQ</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Track Order</a>
+            </div>
+            <div class="footer-links">
+                <h4>Policies</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <div class="payment-methods">
+                <span class="trust-badge">Visa</span>
+                <span class="trust-badge">Mastercard</span>
+                <span class="trust-badge">PayPal</span>
+                <span class="trust-badge">Apple Pay</span>
+            </div>
+            <p class="copyright">&copy; 2026 Aura Audio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- TEMPLATES -->
+    <template id="view-home-template">
+        <!-- Home Hero -->
+        <section class="hero" id="hero-section">
+            <div class="hero-content container">
+                <h1 class="hero-title fade-up">Hear the unheard.</h1>
+                <p class="hero-subtitle fade-up delay-1">Studio-quality precision crafted for the everyday audiophile.</p>
+                <div class="hero-actions fade-up delay-2">
+                    <button class="btn btn-primary btn-large" data-link="shop">Shop Collection</button>
+                    <button class="btn btn-secondary btn-outline btn-large">Discover the Sound</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust section -->
+        <section class="trust-bar bg-light">
+            <div class="container trust-grid">
+                <div class="trust-item">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12l5 5L20 7"/></svg>
+                    <span>Free Worldwide Shipping</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>2-Year Warranty</span>
+                </div>
+                <div class="trust-item">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    <span>30-Day Free Returns</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="featured-products section-padding container">
+            <div class="section-header flex-between">
+                <h2>Featured Equipment</h2>
+                <a href="#" class="view-all link-arrow" data-link="shop">View all products <span>&rarr;</span></a>
+            </div>
+            <div class="product-grid" id="home-product-grid">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Image Banner -->
+        <section class="image-banner">
+            <div class="banner-content">
+                <h2>Design meets Acoustic Engineering</h2>
+                <p>Meticulously crafted from aerospace-grade aluminum and premium memory foam for absolute comfort during prolonged sessions.</p>
+                <button class="btn btn-secondary mt-2" data-link="about">Our Story</button>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials section-padding bg-light">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Audiophile Approved</h2>
+                    <div class="rating-stars text-accent">★★★★★</div>
+                    <p class="text-subtle mt-1">Based on 2,500+ reviews</p>
+                </div>
+                <div class="testimonial-grid mt-4">
+                    <div class="testimonial-card">
+                        <div class="stars text-accent">★★★★★</div>
+                        <p class="testimonial-text">"The clarity is unmatched. I'm hearing details in tracks I've listened to for years that I never noticed before."</p>
+                        <p class="testimonial-author">— Sarah M., <em>Music Producer</em></p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars text-accent">★★★★★</div>
+                        <p class="testimonial-text">"Minimalist design that doesn't compromise on sound. The active noise cancellation is absolutely phenomenal."</p>
+                        <p class="testimonial-author">— James T., <em>Architect</em></p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars text-accent">★★★★★</div>
+                        <p class="testimonial-text">"Sleek, lightweight for 10-hour sessions, and the battery life actually delivers exactly what they claim."</p>
+                        <p class="testimonial-author">— Elena R., <em>Editor</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-shop-template">
+        <section class="shop-header bg-light section-padding pb-0">
+            <div class="container text-center">
+                <h1>All Products</h1>
+                <p class="text-subtle mt-1 max-w-md mx-auto">Explore our full range of premium audio equipment designed for uncompromised sound.</p>
+                <div class="shop-filters mt-4">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="headphones">Headphones</button>
+                    <button class="filter-btn" data-filter="earbuds">Earbuds</button>
+                    <button class="filter-btn" data-filter="accessories">Accessories</button>
+                </div>
+            </div>
+        </section>
+        <section class="shop-grid-container section-padding pb-large">
+            <div class="container">
+                <div class="product-grid mt-2" id="full-product-grid">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="view-product-template">
+        <section class="product-detail section-padding container pb-large" id="product-detail-container">
+            <!-- Injected via JS -->
+        </section>
+    </template>
+
+    <template id="view-checkout-template">
+        <section class="checkout-view section-padding bg-light pb-large">
+            <div class="container checkout-container">
+                <div class="checkout-form-area card">
+                    <h2 class="mb-3">Checkout</h2>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label>Contact Information</label>
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <h3 class="mt-4 mb-2">Shipping Address</h3>
+                        <div class="form-grid">
+                            <div class="form-group"><input type="text" placeholder="First Name" required></div>
+                            <div class="form-group"><input type="text" placeholder="Last Name" required></div>
+                        </div>
+                        <div class="form-group"><input type="text" placeholder="Address" required></div>
+                        <div class="form-group"><input type="text" placeholder="Apartment, suite, etc. (optional)"></div>
+                        <div class="form-grid mt-2">
+                            <div class="form-group"><input type="text" placeholder="City" required></div>
+                            <div class="form-group"><input type="text" placeholder="Postal Code" required></div>
+                        </div>
+                        
+                        <h3 class="mt-4 mb-2">Payment Details</h3>
+                        <div class="payment-badges-checkout mb-2">
+                            <span class="badge-icon">Visa</span>
+                            <span class="badge-icon">MC</span>
+                            <span class="badge-icon">Amex</span>
+                        </div>
+                        <div class="form-group"><input type="text" placeholder="Card Number (0000 0000 0000 0000)" required></div>
+                        <div class="form-grid mt-2">
+                            <div class="form-group"><input type="text" placeholder="Expiry (MM/YY)" required></div>
+                            <div class="form-group"><input type="text" placeholder="CVC" required></div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <input type="text" placeholder="Name on card" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full mt-4 btn-large">Complete Order</button>
+                        <div class="secure-checkout mt-2 text-center text-subtle text-sm">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="align-middle inline-block mr-1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 
+                            <span>Secure Encrypted Checkout via Stripe</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="checkout-summary-area card" id="checkout-summary">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <!-- App Logic -->
+    <script src="js/app.js"></script>
+</body>
+</html>
